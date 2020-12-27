@@ -32,13 +32,13 @@ use yii\widgets\ActiveForm;
 
     <?php // echo $form->field($model, 'updated_by') ?>
 
-    <?php // echo $form->field($model, 'status') ?>
-
-    <?php // echo $form->field($model, 'deleted')->checkbox() ?>
-
     <?php // echo $form->field($model, 'created_at') ?>
 
     <?php // echo $form->field($model, 'updated_at') ?>
+
+    <?php // echo $form->field($model, 'status') ?>
+
+    <?php // echo $form->field($model, 'deleted')->checkbox() ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

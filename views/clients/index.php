@@ -34,10 +34,10 @@ $this->params['breadcrumbs'][] = $this->title;
             'balance',
             //'created_by',
             //'updated_by',
-            //'status',
-            //'deleted:boolean',
             //'created_at',
             //'updated_at',
+            //'status',
+            //'deleted:boolean',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

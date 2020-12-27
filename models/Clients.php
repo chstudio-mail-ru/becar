@@ -14,10 +14,10 @@ use Yii;
  * @property float|null $balance
  * @property int|null $created_by
  * @property int|null $updated_by
+ * @property int|null $created_at
+ * @property int|null $updated_at
  * @property int|null $status
  * @property bool|null $deleted
- * @property string $created_at
- * @property string $updated_at
  */
 class Clients extends \yii\db\ActiveRecord
 {
@@ -35,13 +35,12 @@ class Clients extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'created_at', 'updated_at'], 'required'],
+            [['name'], 'required'],
             [['description'], 'string'],
-            [['account_type', 'created_by', 'updated_by', 'status'], 'default', 'value' => null],
-            [['account_type', 'created_by', 'updated_by', 'status'], 'integer'],
+            [['account_type', 'created_by', 'updated_by', 'created_at', 'updated_at', 'status'], 'default', 'value' => null],
+            [['account_type', 'created_by', 'updated_by', 'created_at', 'updated_at', 'status'], 'integer'],
             [['balance'], 'number'],
             [['deleted'], 'boolean'],
-            [['created_at', 'updated_at'], 'safe'],
             [['name'], 'string', 'max' => 255],
         ];
     }
@@ -59,10 +58,10 @@ class Clients extends \yii\db\ActiveRecord
             'balance' => 'Balance',
             'created_by' => 'Created By',
             'updated_by' => 'Updated By',
-            'status' => 'Status',
-            'deleted' => 'Deleted',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
+            'status' => 'Status',
+            'deleted' => 'Deleted',
         ];
     }
 }

@@ -17,8 +17,8 @@ class ClientsSearch extends Clients
     public function rules()
     {
         return [
-            [['id', 'account_type', 'created_by', 'updated_by', 'status'], 'integer'],
-            [['name', 'description', 'created_at', 'updated_at'], 'safe'],
+            [['id', 'account_type', 'created_by', 'updated_by', 'created_at', 'updated_at', 'status'], 'integer'],
+            [['name', 'description'], 'safe'],
             [['balance'], 'number'],
             [['deleted'], 'boolean'],
         ];
@@ -65,10 +65,10 @@ class ClientsSearch extends Clients
             'balance' => $this->balance,
             'created_by' => $this->created_by,
             'updated_by' => $this->updated_by,
-            'status' => $this->status,
-            'deleted' => $this->deleted,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
+            'status' => $this->status,
+            'deleted' => $this->deleted,
         ]);
 
         $query->andFilterWhere(['ilike', 'name', $this->name])

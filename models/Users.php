@@ -33,12 +33,13 @@ class Users extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['email', 'password', 'name'], 'required'],
+            [['email', 'password', 'name', 'status_id'], 'required'],
             [['status_id'], 'default', 'value' => null],
             [['status_id'], 'integer'],
             [['sex', 'deleted'], 'boolean'],
             [['created_at'], 'default', 'value' => date("Y-m-d H:i:s", time())],
             [['created_at'], 'safe'],
+            [['email'], 'unique', 'targetAttribute' => ['email'], 'message' => 'В БД есть пользователь с таким e-mail'],
             [['email'], 'string', 'max' => 50],
             [['password'], 'string', 'max' => 64],
             [['name'], 'string', 'max' => 500],
