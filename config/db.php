@@ -5,7 +5,7 @@ return [
     //'dsn' => 'pgsql:host=localhost;port=5433;dbname=becar',
     'dsn' => 'pgsql:host=localhost;port=5432;dbname=becar',
     'username' => 'postgres',
-    'password' => 'admin',
+    'password' => '8026',
     'charset' => 'utf8',
 
     
