@@ -1,10 +1,7 @@
-<?php /** @noinspection ALL */
-
+<?php
 
 namespace app\models;
 
-
-use yii\base\InvalidConfigException;
 use yii\db\ActiveRecord;
 
 /**

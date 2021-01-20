@@ -1,5 +1,4 @@
-<?php /** @noinspection PhpUndefinedClassInspection */
-
+<?php
 
 namespace app\models;
 

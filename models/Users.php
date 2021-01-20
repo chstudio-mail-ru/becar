@@ -1,8 +1,6 @@
-<?php /** @noinspection ALL */
-
+<?php
 
 namespace app\models;
-
 
 use yii\base\InvalidConfigException;
 
