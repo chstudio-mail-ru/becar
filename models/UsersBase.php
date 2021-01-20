@@ -8,7 +8,6 @@ use Yii;
  * This is the model class for table "users".
  *
  * @property int $id
- * @property int $parent_id
  * @property string $email
  * @property string $password
  * @property int $status_id
@@ -17,7 +16,7 @@ use Yii;
  * @property string $created_at
  * @property bool $deleted
  * @property string|null $auth_key
- * @property string|null $group
+ * @property int $group_id
  */
 class UsersBase extends \yii\db\ActiveRecord
 {
@@ -35,12 +34,11 @@ class UsersBase extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['parent_id', 'status_id'], 'default', 'value' => null],
-            [['parent_id', 'status_id'], 'integer'],
             [['email', 'password', 'name'], 'required'],
+            [['status_id', 'group_id'], 'default', 'value' => null],
+            [['status_id', 'group_id'], 'integer'],
             [['sex', 'deleted'], 'boolean'],
             [['created_at'], 'safe'],
-            [['group'], 'string'],
             [['email'], 'string', 'max' => 50],
             [['password'], 'string', 'max' => 64],
             [['name'], 'string', 'max' => 500],
@@ -56,7 +54,6 @@ class UsersBase extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'parent_id' => 'Parent ID',
             'email' => 'Email',
             'password' => 'Password',
             'status_id' => 'Status ID',
@@ -65,7 +62,7 @@ class UsersBase extends \yii\db\ActiveRecord
             'created_at' => 'Created At',
             'deleted' => 'Deleted',
             'auth_key' => 'Auth Key',
-            'group' => 'Group',
+            'group_id' => 'Group ID',
         ];
     }
 }
