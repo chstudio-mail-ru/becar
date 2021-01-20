@@ -4,7 +4,6 @@
 namespace app\models;
 
 
-use Throwable;
 use yii\db\ActiveRecord;
 use yii\db\StaleObjectException;
 
@@ -45,7 +44,7 @@ class UsersRefClients extends UsersRefClientsBase
             return $reference->delete();
         } catch (StaleObjectException $e) {
             return false;
-        } catch (Throwable $e) {
+        } catch (\Throwable $e) {
             return false;
         }
     }

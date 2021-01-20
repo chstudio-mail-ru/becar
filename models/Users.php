@@ -18,6 +18,7 @@ use yii\base\InvalidConfigException;
  * @property string $created_at
  * @property bool $deleted
  * @property string|null $auth_key
+ * @property int $group_id
  */
 class Users extends UsersBase
 {
@@ -48,7 +49,7 @@ class Users extends UsersBase
      * @param int $clientId
      * @return bool
      */
-    public function removeUser(int $clientId): bool
+    public function removeClient(int $clientId): bool
     {
         return UsersRefClients::deleteRecord($this->id, $clientId);
     }

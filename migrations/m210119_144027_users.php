@@ -12,25 +12,21 @@ class m210119_144027_users extends Migration
      */
     public function safeUp()
     {
-        $this->execute('DROP TYPE IF EXISTS group_type;');
-        $this->execute("CREATE TYPE group_type AS ENUM ('Магазин', 'Группа разработчиков');");
         $this->execute('CREATE TABLE "users" (
             "id" serial PRIMARY KEY,
-            "parent_id" integer DEFAULT 0 NOT NULL,
             "email" varchar(50) COLLATE "default" NOT NULL,
             "password" varchar(64) COLLATE "default" NOT NULL,
             "status_id" int4 DEFAULT 1 NOT NULL,
             "name" varchar(500) COLLATE "default" NOT NULL,
             "sex" bool,
             "created_at" timestamp(0) DEFAULT now() NOT NULL,
-            "deleted" bool DEFAULT true NOT NULL,
+            "deleted" bool DEFAULT false NOT NULL,
             "auth_key" varchar(32) COLLATE "default",
-            "group" group_type default NULL NULL,
+            "group_id" integer default 0 NOT NULL,
             UNIQUE(email)
             );'
         );
-        $this->createIndex('parent_id_idx', '{{%users}}', 'parent_id');
-        $this->createIndex('group_idx', '{{%users}}', 'group');
+        $this->createIndex('group_id_idx', '{{%users}}', 'group_id');
 
         try {
             Yii::$app->runAction("gii/model", ["tableName" => "users", "modelClass" => "UsersBase", "ns" => "app\\models"]);
@@ -47,10 +43,8 @@ class m210119_144027_users extends Migration
     public function safeDown()
     {
         $this->dropPrimaryKey("id", "users");
-        $this->dropIndex("parent_id_idx", "users");
-        $this->dropIndex("group_idx", "users");
+        $this->dropIndex("group_id_idx", "users");
         $this->dropTable("users");
-        $this->execute('DROP TYPE IF EXISTS group_type;');
 
         return true;
     }
