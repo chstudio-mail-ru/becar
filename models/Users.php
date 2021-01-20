@@ -3,6 +3,7 @@
 namespace app\models;
 
 use yii\base\InvalidConfigException;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class extends UsersBase for table "users".
@@ -61,5 +62,13 @@ class Users extends UsersBase
         return self::find()
             ->where(['group_id' => $groupId])
             ->all();
+    }
+
+    /**
+     * @return ActiveRecord
+     */
+    public function getGroup(): ActiveRecord
+    {
+        return $this->hasOne(Groups::class, ['group_id' => 'id'])->one();
     }
 }
