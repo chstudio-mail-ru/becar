@@ -39,6 +39,9 @@ AppAsset::register($this);
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
             ['label' => 'Главная', 'url' => ['/site/index']],
+            ['label' => 'Пользователи', 'url' => ['/users']],
+            ['label' => 'Клиенты', 'url' => ['/clients']],
+            ['label' => 'Группы', 'url' => ['/groups']],
         ],
     ]);
     NavBar::end();

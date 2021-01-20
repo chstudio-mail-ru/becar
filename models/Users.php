@@ -22,6 +22,16 @@ use yii\db\ActiveRecord;
 class Users extends UsersBase
 {
     /**
+     * {@inheritdoc}
+     */
+    public function rules()
+    {
+        return array_merge(parent::rules(), [
+            [['email'], 'email'],
+        ]);
+    }
+
+    /**
      * @return array
      */
     public function getClients(): array
@@ -69,6 +79,17 @@ class Users extends UsersBase
      */
     public function getGroup(): ActiveRecord
     {
-        return $this->hasOne(Groups::class, ['group_id' => 'id'])->one();
+        return $this->hasOne(Groups::class, ['id' => 'group_id'])->one();
     }
+
+    /**
+     * @return array
+     */
+    public static function getAll(): array
+    {
+        return self::find()
+            ->where(['deleted' => 'false'])
+            ->all();
+    }
+
 }
