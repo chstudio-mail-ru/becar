@@ -73,10 +73,15 @@ class Groups extends GroupsBase
      */
     public static function deleteRecord(int $groupId): bool
     {
-        $entity = self::findById($groupId);
+        $users = Users::getUsersByGroupId($groupId);
+        if (!$users) {
+            $entity = self::findById($groupId);
 
-        if($entity) {
-            return $entity->delete();
+            if($entity) {
+                return $entity->delete();
+            } else {
+                return false;
+            }
         } else {
             return false;
         }

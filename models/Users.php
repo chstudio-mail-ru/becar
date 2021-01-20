@@ -53,4 +53,15 @@ class Users extends UsersBase
     {
         return UsersRefClients::deleteRecord($this->id, $clientId);
     }
+
+    /**
+     * @param int $groupId
+     * @return array
+     */
+    public static function getUsersByGroupId(int $groupId): array
+    {
+        return self::find()
+            ->where(['group_id' => $groupId])
+            ->all();
+    }
 }
